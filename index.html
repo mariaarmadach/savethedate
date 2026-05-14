@@ -125,6 +125,7 @@
     ═══════════════════════════════════════════════ */
     .invitation {
       position: relative;
+      margin-top: -200px;
       padding: 0 clamp(20px, 5vw, 40px) clamp(60px, 10vw, 100px);
       /* mismo fondo de rayas que el hero */
       background-image: repeating-linear-gradient(
@@ -355,11 +356,126 @@
       margin-top: 28px;
     }
 
+    /* ═══════════════════════════════════════════════
+       DETALLES — fondo blanco
+    ═══════════════════════════════════════════════ */
+    .details {
+      background: #fff;
+      padding: clamp(48px, 8vw, 80px) clamp(24px, 6vw, 60px);
+    }
+    .details-inner {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .detail-block { margin: 0 0 8px; }
+    .detail-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+      letter-spacing: 0.36em;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+    .detail-text {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-style: italic;
+      color: #3a3a38;
+      line-height: 2;
+    }
+    .detail-address {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-style: italic;
+      color: var(--navy);
+      line-height: 2;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+    .detail-divider {
+      width: 40px; height: 1px;
+      background: var(--divider);
+      margin: 32px auto;
+    }
+
+    /* ═══════════════════════════════════════════════
+       RSVP — fondo beige dorado
+    ═══════════════════════════════════════════════ */
+    .rsvp-section-wrap {
+      background: var(--gold);
+      padding: clamp(48px, 8vw, 80px) clamp(24px, 6vw, 60px);
+    }
+    .rsvp-inner {
+      max-width: 400px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .rsvp-section-wrap .rsvp-title {
+      color: #fff;
+      letter-spacing: 0.3em;
+    }
+    .rsvp-section-wrap .field-label { color: #fff; }
+    .rsvp-section-wrap .rsvp-form input {
+      border-bottom-color: rgba(255,255,255,0.5);
+      color: #fff;
+    }
+    .rsvp-section-wrap .rsvp-form input::placeholder { color: rgba(255,255,255,0.65); }
+    .rsvp-section-wrap .rsvp-form input:focus { border-bottom-color: #fff; }
+    .rsvp-section-wrap .rsvp-btn {
+      background: rgba(255,255,255,0.25);
+      color: #fff;
+    }
+    .rsvp-section-wrap .rsvp-btn:hover,
+    .rsvp-section-wrap .rsvp-btn.active { background: rgba(255,255,255,0.45); }
+    .rsvp-section-wrap .rsvp-submit {
+      border-color: #fff;
+      color: #fff;
+    }
+    .rsvp-section-wrap .rsvp-submit:hover { background: #fff; color: var(--gold); }
+    .rsvp-section-wrap .rsvp-success { color: #fff; }
+
+    /* ═══════════════════════════════════════════════
+       REGALOS — fondo blanco
+    ═══════════════════════════════════════════════ */
+    .gifts {
+      background: #fff;
+      padding: clamp(48px, 8vw, 80px) clamp(24px, 6vw, 60px);
+    }
+    .gifts-inner {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .gift-text {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(0.86rem, 1.8vw, 1rem);
+      font-style: italic;
+      color: #3a3a38;
+      line-height: 1.9;
+      margin-top: 14px;
+    }
+    .gift-addr {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.7rem, 1.4vw, 0.82rem);
+      letter-spacing: 0.14em;
+      color: var(--navy);
+      line-height: 2.2;
+      margin-top: 16px;
+    }
+    .gift-link {
+      display: inline-block;
+      margin-top: 18px;
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.62rem, 1.2vw, 0.72rem);
+      letter-spacing: 0.22em;
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
     /* ── Responsive ─────────────────────────────── */
     @media (max-width: 480px) {
       .parents { flex-direction: column; align-items: center; gap: 4px; }
-      .card-parents { flex-direction: column; gap: 4px; }
-      .card-parents span { text-align: center !important; }
     }
   </style>
 </head>
@@ -389,6 +505,101 @@
 ═══════════════════════════════════════════════════ -->
 <section class="invitation" id="invitation">
   <img src="download.png" alt="Invitación de boda María &amp; Lolo" class="inv-card-img" />
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     DETALLES — fondo blanco
+═══════════════════════════════════════════════════ -->
+<section class="details">
+  <div class="details-inner">
+
+    <div class="detail-block">
+      <p class="detail-label">FECHA Y HORA</p>
+      <p class="detail-text">Viernes, 4 de septiembre de 2026</p>
+      <p class="detail-text">Ceremonia · 19:00 h</p>
+      <p class="detail-text">Aperitivo y Cena · 20:00 h</p>
+    </div>
+
+    <div class="detail-divider"></div>
+
+    <div class="detail-block">
+      <p class="detail-label">LUGAR</p>
+      <a class="detail-address" href="https://maps.google.com/?q=Real+Club+de+la+Puerta+de+Hierro,+Av.+de+Miraflores,+Madrid" target="_blank" rel="noopener">
+        Real Club de la Puerta de Hierro<br>
+        Av. de Miraflores, s/n<br>
+        28035 Madrid
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     RSVP — fondo beige dorado
+═══════════════════════════════════════════════════ -->
+<section class="rsvp-section-wrap">
+  <div class="rsvp-inner">
+    <p class="rsvp-title">CONFIRMACIÓN DE ASISTENCIA</p>
+
+    <div data-fs-success class="rsvp-success">
+      Muchas gracias por confirmar. ¡Nos vemos el 4 de septiembre!
+    </div>
+    <div data-fs-error class="rsvp-error"></div>
+
+    <form class="rsvp-form" id="rsvp-form">
+
+      <p class="field-label">ASISTIRÉ</p>
+      <div class="rsvp-btns">
+        <button type="button" class="rsvp-btn" onclick="toggle('asistencia','Sí',this)">SÍ</button>
+        <button type="button" class="rsvp-btn" onclick="toggle('asistencia','No',this)">NO</button>
+      </div>
+      <input type="hidden" name="asistencia" id="asistencia" value="" />
+
+      <input type="text" name="nombre" placeholder="Nombre completo" required autocomplete="name" data-fs-field />
+      <span data-fs-error="nombre" class="field-error"></span>
+
+      <p class="field-label">ASISTIRÁ CON ACOMPAÑANTE</p>
+      <div class="rsvp-btns">
+        <button type="button" class="rsvp-btn" onclick="toggle('acompanante','Sí',this); showGuest(true)">SÍ</button>
+        <button type="button" class="rsvp-btn" onclick="toggle('acompanante','No',this); showGuest(false)">NO</button>
+      </div>
+      <input type="hidden" name="acompanante" id="acompanante" value="" />
+
+      <div id="guestWrap" style="display:none;">
+        <input type="text" name="nombre_acompanante" id="nombre_acompanante" placeholder="Nombre completo del acompañante" autocomplete="off" data-fs-field />
+        <span data-fs-error="nombre_acompanante" class="field-error"></span>
+      </div>
+
+      <input type="text" name="intolerancias" placeholder="Intolerancias alimentarias" autocomplete="off" data-fs-field />
+      <span data-fs-error="intolerancias" class="field-error"></span>
+
+      <button type="submit" class="rsvp-submit" data-fs-submit-btn>ENVIAR CONFIRMACIÓN</button>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════
+     REGALOS — fondo blanco
+═══════════════════════════════════════════════════ -->
+<section class="gifts">
+  <div class="gifts-inner">
+    <p class="detail-label">LISTA DE BODA</p>
+    <p class="gift-text">
+      Para quienes queráis marcar la ocasión con un regalo,
+      los recibiremos con muchísima ilusión en la siguiente dirección:
+    </p>
+    <p class="gift-addr">
+      Sres. Rein Armada<br>
+      Calle Balbina Valverde 10, Bajo A<br>
+      28002 Madrid
+    </p>
+    <p class="gift-text" style="margin-top:16px;">
+      Además, hemos reservado una pieza de arte que nos encantaría
+      adquirir como recuerdo de este día. Si así lo consideráis,
+      nos hará muy felices que forméis parte de este recuerdo:
+    </p>
+    <a class="gift-link" href="#" target="_blank" rel="noopener">PÁGINA DE REGALO →</a>
+  </div>
 </section>
 
 <script>

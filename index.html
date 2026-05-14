@@ -368,6 +368,39 @@
       margin: 0 auto;
       text-align: center;
     }
+    .detail-date-title {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--navy);
+      margin-bottom: 0;
+    }
+    .detail-time {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      color: var(--navy);
+      margin-top: 8px;
+    }
+    .detail-event {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      color: var(--navy);
+      line-height: 1.7;
+      margin-top: 4px;
+    }
+    .detail-note {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(0.85rem, 1.8vw, 1rem);
+      font-style: italic;
+      color: var(--navy);
+      line-height: 1.8;
+    }
+    .detail-dash {
+      color: var(--navy);
+      font-size: 1.1rem;
+      margin: 14px 0;
+    }
     .detail-block { margin: 0 0 8px; }
     .detail-label {
       font-family: 'Cormorant SC', serif;
@@ -386,7 +419,6 @@
     .detail-address {
       font-family: 'Cormorant Garant', serif;
       font-size: clamp(0.9rem, 2vw, 1.05rem);
-      font-style: italic;
       color: var(--navy);
       line-height: 2;
       text-decoration: underline;
@@ -464,13 +496,20 @@
     }
     .gift-link {
       display: inline-block;
-      margin-top: 18px;
+      margin-top: 22px;
+      padding: 12px 32px;
       font-family: 'Cormorant SC', serif;
-      font-size: clamp(0.62rem, 1.2vw, 0.72rem);
-      letter-spacing: 0.22em;
+      font-size: clamp(0.58rem, 1.2vw, 0.67rem);
+      letter-spacing: 0.26em;
       color: var(--navy);
-      text-decoration: underline;
-      text-underline-offset: 4px;
+      text-decoration: none;
+      background: var(--cream);
+      border: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .gift-link:hover {
+      background: var(--gold);
+      color: #fff;
     }
 
     /* ── Responsive ─────────────────────────────── */
@@ -513,23 +552,28 @@
 <section class="details">
   <div class="details-inner">
 
-    <div class="detail-block">
-      <p class="detail-label">FECHA Y HORA</p>
-      <p class="detail-text">Viernes, 4 de septiembre de 2026</p>
-      <p class="detail-text">Ceremonia · 19:00 h</p>
-      <p class="detail-text">Aperitivo y Cena · 20:00 h</p>
-    </div>
+    <h2 class="detail-date-title">Viernes 4 de Septiembre</h2>
 
     <div class="detail-divider"></div>
 
-    <div class="detail-block">
-      <p class="detail-label">LUGAR</p>
-      <a class="detail-address" href="https://maps.google.com/?q=Real+Club+de+la+Puerta+de+Hierro,+Av.+de+Miraflores,+Madrid" target="_blank" rel="noopener">
-        Real Club de la Puerta de Hierro<br>
-        Av. de Miraflores, s/n<br>
-        28035 Madrid
-      </a>
-    </div>
+    <p class="detail-time">19:00h</p>
+    <p class="detail-event">Ceremonia Religiosa en la Capilla del<br>Real Club de la Puerta de Hierro</p>
+
+    <p class="detail-dash">–</p>
+
+    <p class="detail-note">Debido a las limitaciones de aforo, la ceremonia religiosa tendrá<br>lugar en la intimidad de los familiares directos y testigos.</p>
+
+    <p class="detail-dash">–</p>
+
+    <p class="detail-time">20:00h</p>
+    <p class="detail-event">Aperitivo y cena</p>
+
+    <div class="detail-divider"></div>
+
+    <a class="detail-address" href="https://maps.google.com/?q=Real+Club+de+la+Puerta+de+Hierro,+Av.+de+Miraflores,+Madrid" target="_blank" rel="noopener">
+      Real Club de la Puerta de Hierro<br>
+      Av. de Miraflores, s/n · 28035 Madrid
+    </a>
 
   </div>
 </section>
@@ -570,6 +614,15 @@
         <span data-fs-error="nombre_acompanante" class="field-error"></span>
       </div>
 
+      <input type="text" name="direccion" placeholder="Dirección" autocomplete="street-address" data-fs-field />
+      <span data-fs-error="direccion" class="field-error"></span>
+
+      <input type="text" name="codigo_postal" placeholder="Código postal" autocomplete="postal-code" data-fs-field />
+      <span data-fs-error="codigo_postal" class="field-error"></span>
+
+      <input type="text" name="ciudad" placeholder="Ciudad" autocomplete="address-level2" data-fs-field />
+      <span data-fs-error="ciudad" class="field-error"></span>
+
       <input type="text" name="intolerancias" placeholder="Intolerancias alimentarias" autocomplete="off" data-fs-field />
       <span data-fs-error="intolerancias" class="field-error"></span>
 
@@ -598,7 +651,7 @@
       adquirir como recuerdo de este día. Si así lo consideráis,
       nos hará muy felices que forméis parte de este recuerdo:
     </p>
-    <a class="gift-link" href="#" target="_blank" rel="noopener">PÁGINA DE REGALO →</a>
+    <a class="gift-link" href="https://buy.stripe.com/dRm5kE6Ga0EKdG58ZH5AQ00" target="_blank" rel="noopener">HACER APORTACIÓN →</a>
   </div>
 </section>
 

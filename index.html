@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>María & Lolo — 4 Septiembre 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Cormorant+Garant:ital,wght@0,300;0,400;1,300;1,400&family=Cormorant+SC:wght@300;400&family=Pinyon+Script&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:      #B9AB74;
+      --cream:     #EFE9CC;
+      --navy:      #1F2F5A;
+      --card-bg:   #FAF8F2;
+      --inv-bg:    #FAF8F2;
+      --divider:   #d4c9a0;
+      --blue-btn:  #D6E4F5;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Cormorant Garant', Georgia, serif; background: #DEDAD0; }
+
+    /* ═══════════════════════════════════════════════
+       HERO — sobre + tarjeta
+    ═══════════════════════════════════════════════ */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Fondo rayas */
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        90deg,
+        var(--gold)  0px, var(--gold)  26px,
+        var(--cream) 26px, var(--cream) 52px
+      );
+      z-index: 0;
+    }
+    /* Textura lino */
+    .hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* ── Hero content ───────────────────────────── */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 clamp(24px, 6vw, 60px);
+    }
+    .hero-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.62rem, 1.4vw, 0.78rem);
+      letter-spacing: 0.48em;
+      color: var(--navy);
+      margin-bottom: clamp(18px, 3vw, 28px);
+    }
+    .hero-names {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(2.6rem, 8vw, 5.5rem);
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--navy);
+      line-height: 1.08;
+      margin-bottom: clamp(14px, 2.5vw, 22px);
+    }
+    .hero-date {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.7rem, 1.6vw, 0.9rem);
+      letter-spacing: 0.3em;
+      color: var(--navy);
+    }
+
+    /* ── Scroll hint ────────────────────────────── */
+    .scroll-hint {
+      position: relative;
+      z-index: 2;
+      margin-top: clamp(28px, 5vh, 48px);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      animation: fadeIn 0.7s ease 3s forwards;
+    }
+    .scroll-hint span {
+      font-family: 'Cormorant SC', Georgia, serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.32em;
+      color: var(--navy);
+    }
+    .scroll-line {
+      width: 1px;
+      height: 36px;
+      background: var(--navy);
+      opacity: 0.5;
+      animation: linePulse 1.8s ease-in-out 3s infinite;
+    }
+    @keyframes linePulse {
+      0%,100% { transform: scaleY(1);    opacity: 0.3; }
+      50%      { transform: scaleY(1.2); opacity: 0.7; }
+    }
+    @keyframes fadeIn { to { opacity: 1; } }
+
+
+    /* ═══════════════════════════════════════════════
+       INVITACIÓN — sección de scroll
+    ═══════════════════════════════════════════════ */
+    .invitation {
+      position: relative;
+      padding: 0 clamp(20px, 5vw, 40px) clamp(60px, 10vw, 100px);
+      /* mismo fondo de rayas que el hero */
+      background-image: repeating-linear-gradient(
+        90deg,
+        var(--gold)  0px, var(--gold)  26px,
+        var(--cream) 26px, var(--cream) 52px
+      );
+    }
+    /* misma textura lino encima */
+    .invitation::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+
+    .inv-card-img {
+      position: relative;
+      display: block;
+      max-width: min(560px, 90vw);
+      width: 100%;
+      margin: 0 auto;
+      box-shadow: 0 12px 60px rgba(0,0,0,0.2), 0 2px 12px rgba(0,0,0,0.1);
+    }
+
+    /* Padres */
+    .parents {
+      display: flex;
+      justify-content: space-around;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .parents-col {
+      font-size: clamp(0.7rem, 1.6vw, 0.82rem);
+      font-style: italic;
+      color: #4a4a46;
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .participan {
+      font-size: clamp(0.74rem, 1.6vw, 0.86rem);
+      font-style: italic;
+      color: #4a4a46;
+      letter-spacing: 0.04em;
+      margin-bottom: 18px;
+    }
+
+    .couple-name {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: #1C1C1A;
+      line-height: 1.2;
+      text-transform: uppercase;
+    }
+    .con {
+      font-size: clamp(0.9rem, 2vw, 1.05rem);
+      font-style: italic;
+      font-weight: 300;
+      color: #4a4a46;
+      margin: 6px 0;
+      display: block;
+    }
+
+    .divider {
+      width: 50px; height: 1px;
+      background: var(--divider);
+      margin: 24px auto;
+    }
+
+    .event-time {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(1rem, 2.4vw, 1.25rem);
+      letter-spacing: 0.12em;
+      color: #1C1C1A;
+      margin-bottom: 5px;
+    }
+    .event-desc {
+      font-size: clamp(0.8rem, 1.8vw, 0.92rem);
+      font-style: italic;
+      color: #4a4a46;
+      line-height: 1.65;
+    }
+    .note {
+      font-size: clamp(0.72rem, 1.6vw, 0.82rem);
+      font-style: italic;
+      color: #4a4a46;
+      line-height: 1.8;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+
+    .address {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.64rem, 1.4vw, 0.76rem);
+      letter-spacing: 0.22em;
+      color: var(--navy);
+      line-height: 2.2;
+    }
+    .address a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+
+    .gift-section { max-width: 380px; margin: 0 auto; }
+    .gift-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.62rem, 1.3vw, 0.74rem);
+      letter-spacing: 0.28em;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .gift-text {
+      font-size: clamp(0.74rem, 1.6vw, 0.84rem);
+      font-style: italic;
+      color: #4a4a46;
+      line-height: 1.8;
+    }
+    .gift-addr {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+      letter-spacing: 0.15em;
+      color: var(--navy);
+      line-height: 2.2;
+      margin: 10px 0;
+    }
+    .gift-link {
+      display: inline-block;
+      margin-top: 10px;
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.6rem, 1.2vw, 0.7rem);
+      letter-spacing: 0.2em;
+      color: var(--navy);
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    /* ── RSVP ───────────────────────────────────── */
+    .rsvp-section { margin-top: 32px; }
+    .rsvp-title {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.62rem, 1.3vw, 0.74rem);
+      letter-spacing: 0.3em;
+      color: var(--navy);
+      margin-bottom: 18px;
+    }
+    .field-label {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.56rem, 1.1vw, 0.65rem);
+      letter-spacing: 0.26em;
+      color: #4a4a46;
+      margin-top: 6px;
+      margin-bottom: 7px;
+    }
+    .rsvp-form {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .rsvp-form input,
+    .rsvp-form textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--divider);
+      padding: 7px 2px;
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(0.82rem, 1.8vw, 0.94rem);
+      font-style: italic;
+      color: #1C1C1A;
+      outline: none;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+    .rsvp-form input::placeholder,
+    .rsvp-form textarea::placeholder { color: #b0ada5; }
+    .rsvp-form input:focus,
+    .rsvp-form textarea:focus { border-bottom-color: var(--navy); }
+    .rsvp-form textarea { resize: none; height: 56px; }
+
+    .rsvp-btns { display: flex; gap: 8px; }
+    .rsvp-btn {
+      flex: 1;
+      padding: 11px 12px;
+      background: var(--blue-btn);
+      border: none;
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.58rem, 1.2vw, 0.67rem);
+      letter-spacing: 0.24em;
+      color: var(--navy);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .rsvp-btn:hover, .rsvp-btn.active { background: #bdd3ee; }
+
+    .rsvp-submit {
+      margin-top: 6px;
+      background: transparent;
+      border: 1px solid var(--navy);
+      color: var(--navy);
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.58rem, 1.2vw, 0.67rem);
+      letter-spacing: 0.26em;
+      padding: 12px 32px;
+      cursor: pointer;
+      width: 100%;
+      transition: background 0.2s, color 0.2s;
+    }
+    .rsvp-submit:hover { background: var(--navy); color: var(--card-bg); }
+    .rsvp-submit:disabled { opacity: 0.6; cursor: default; }
+
+    .rsvp-success {
+      display: none;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: #4a4a46;
+      margin-top: 10px;
+    }
+    .rsvp-error { color: #a0341a; font-style: italic; font-size: 0.78rem; }
+    .field-error { display: block; color: #a0341a; font-style: italic; font-size: 0.72rem; margin-top: -5px; }
+
+    .src-inv {
+      font-family: 'Cormorant SC', serif;
+      font-size: clamp(0.58rem, 1.1vw, 0.68rem);
+      letter-spacing: 0.4em;
+      color: #b0a880;
+      margin-top: 28px;
+    }
+
+    /* ── Responsive ─────────────────────────────── */
+    @media (max-width: 480px) {
+      .parents { flex-direction: column; align-items: center; gap: 4px; }
+      .card-parents { flex-direction: column; gap: 4px; }
+      .card-parents span { text-align: center !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HERO — banner con rayas
+═══════════════════════════════════════════════════ -->
+<section class="hero">
+
+  <div class="hero-content">
+    <p class="hero-label">SAVE THE DATE</p>
+    <h1 class="hero-names">María &amp; Lolo</h1>
+    <p class="hero-date">4 de septiembre de 2026</p>
+  </div>
+
+  <a href="#invitation" class="scroll-hint">
+    <span>VER INVITACIÓN</span>
+    <div class="scroll-line"></div>
+  </a>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════════════════
+     INVITACIÓN — contenido al hacer scroll
+═══════════════════════════════════════════════════ -->
+<section class="invitation" id="invitation">
+  <img src="download.png" alt="Invitación de boda María &amp; Lolo" class="inv-card-img" />
+</section>
+
+<script>
+  function toggle(id, val, btn) {
+    document.getElementById(id).value = val;
+    btn.closest('.rsvp-btns').querySelectorAll('.rsvp-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+
+  function showGuest(show) {
+    const wrap  = document.getElementById('guestWrap');
+    const input = document.getElementById('nombre_acompanante');
+    wrap.style.display = show ? 'block' : 'none';
+    input.required = show;
+    if (!show) input.value = '';
+  }
+
+  window.formspree = window.formspree || function(){ (formspree.q = formspree.q||[]).push(arguments); };
+  formspree('initForm', { formElement: '#rsvp-form', formId: 'xwvyjzdk' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>

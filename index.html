@@ -511,6 +511,14 @@
       background: var(--gold);
       color: #fff;
     }
+    .gift-thanks {
+      font-family: 'Cormorant Garant', serif;
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      font-style: italic;
+      color: var(--navy);
+      margin-top: 16px;
+      line-height: 1.8;
+    }
 
     /* ── Responsive ─────────────────────────────── */
     @media (max-width: 480px) {
@@ -646,12 +654,13 @@
       Calle Balbina Valverde 10, Bajo A<br>
       28002 Madrid
     </p>
-    <p class="gift-text" style="margin-top:16px;">
-      Además, hemos reservado una pieza de arte que nos encantaría
-      adquirir como recuerdo de este día. Si así lo consideráis,
-      nos hará muy felices que forméis parte de este recuerdo:
-    </p>
-    <a class="gift-link" href="https://buy.stripe.com/dRm5kE6Ga0EKdG58ZH5AQ00" target="_blank" rel="noopener">HACER APORTACIÓN →</a>
+    <div id="gift-cta">
+      <p class="gift-text" style="margin-top:16px;">
+        Además, para quienes nos habéis preguntado qué nos haría ilusión, hemos reservado una pieza de arte para recordar este día tan especial. Si os apetece formar parte de este recuerdo, podéis hacerlo aquí.
+      </p>
+      <a class="gift-link" href="https://buy.stripe.com/dRm5kE6Ga0EKdG58ZH5AQ00" target="_blank" rel="noopener">HACER APORTACIÓN →</a>
+    </div>
+    <p id="gift-thanks" class="gift-thanks" style="display:none;">¡Qué ilusión! ¡Nos vemos el 4 de septiembre!</p>
   </div>
 </section>
 
@@ -672,6 +681,14 @@
 
   window.formspree = window.formspree || function(){ (formspree.q = formspree.q||[]).push(arguments); };
   formspree('initForm', { formElement: '#rsvp-form', formId: 'xwvyjzdk' });
+
+  const successDiv = document.querySelector('[data-fs-success]');
+  new MutationObserver(function() {
+    if (successDiv.style.display !== 'none' && successDiv.style.display !== '') {
+      document.getElementById('gift-cta').style.display = 'none';
+      document.getElementById('gift-thanks').style.display = 'block';
+    }
+  }).observe(successDiv, { attributes: true, attributeFilter: ['style'] });
 </script>
 <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 
